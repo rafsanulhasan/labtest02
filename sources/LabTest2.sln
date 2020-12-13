@@ -13,7 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Application
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3CA6C679-746B-4CAE-B5B5-8F1518699E27}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "LabTest2.Architecture", "LabTest2.Architecture\LabTest2.Architecture.modelproj", "{EDA5DC8F-AAF8-4A2B-89BF-181C2356EF7E}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDA5DC8F-AAF8-4A2B-89BF-181C2356EF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA5DC8F-AAF8-4A2B-89BF-181C2356EF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA5DC8F-AAF8-4A2B-89BF-181C2356EF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA5DC8F-AAF8-4A2B-89BF-181C2356EF7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
