@@ -1,16 +1,14 @@
 ﻿@page "/counter"
+@inherits ReactiveComponentBase<CounterViewModel>
 
 <h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+<p>Current count: @ViewModel.Count</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}
+<SfButton @ref="@IncreaseButton" 
+          Content="Increase" 
+          CssClass="e-primary"
+          @onclick="OnIncrease"
+          Disabled="@ViewModel.IsIncreaseButtonDisabled">
+	
+</SfButton>
