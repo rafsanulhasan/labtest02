@@ -17,6 +17,7 @@
 		<PackageReference Include="HotChocolate.Types.OffsetPagination" Version="11.0.2" />
 		<PackageReference Include="HotChocolate.Types.Sorting" Version="11.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.1" />
+		<PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
 		<PackageReference Include="System.Reactive" Version="5.0.0" />
 		<PackageReference Include="System.Reactive.Linq" Version="5.0.0" />
 		<PackageReference Include="System.Reactive.Observable.Aliases" Version="5.0.0" />
