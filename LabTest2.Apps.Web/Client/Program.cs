@@ -2,6 +2,8 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+using Fluxor;
+
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +28,8 @@ namespace LabTest2.Apps.Web.Client
 			builder.Services.AddApiAuthorization();
 
 			builder.Services.AddSyncfusionBlazor();
+
+			builder.Services.AddFluxor(o => o.ScanAssemblies(typeof(Program).Assembly));
 
 			await builder.Build().RunAsync().ConfigureAwait(false);
 		}
