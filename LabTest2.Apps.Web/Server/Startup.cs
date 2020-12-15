@@ -1,4 +1,3 @@
-using System.Linq;
 
 using LabTest2.Apps.Web.Server.Data;
 using LabTest2.Apps.Web.Server.Models;
@@ -6,12 +5,13 @@ using LabTest2.Apps.Web.Server.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using Syncfusion.Blazor;
+using Syncfusion.Licensing;
 
 namespace LabTest2.Apps.Web.Server
 {
@@ -45,11 +45,14 @@ namespace LabTest2.Apps.Web.Server
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+
+			services.AddSyncfusionBlazor();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			SyncfusionLicenseProvider.RegisterLicense(Configuration.GetValue<string>("SyncFusion:License"));
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();

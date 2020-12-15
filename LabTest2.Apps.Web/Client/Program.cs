@@ -1,18 +1,16 @@
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+
+using Syncfusion.Blazor;
 
 namespace LabTest2.Apps.Web.Client
 {
-	public class Program
+	public static class Program
 	{
 		public static async Task Main(string[] args)
 		{
@@ -27,7 +25,9 @@ namespace LabTest2.Apps.Web.Client
 
 			builder.Services.AddApiAuthorization();
 
-			await builder.Build().RunAsync();
+			builder.Services.AddSyncfusionBlazor();
+
+			await builder.Build().RunAsync().ConfigureAwait(false);
 		}
 	}
 }
