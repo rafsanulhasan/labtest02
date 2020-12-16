@@ -9,7 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace LabTest2.Apps.Web.Server.Data
 {
-	public class ApplicationDbContext 
+	public class ApplicationDbContext
 		: ApiAuthorizationDbContext<ApplicationUser>
 	{
 		public ApplicationDbContext(

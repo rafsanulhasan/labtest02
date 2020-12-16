@@ -8,7 +8,7 @@ namespace LabTest2.Apps.Web.Server.Pages
 {
 	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 	[IgnoreAntiforgeryToken]
-	public class ErrorModel 
+	public class ErrorModel
 		: PageModel
 	{
 		public string RequestId { get; set; }
@@ -17,13 +17,12 @@ namespace LabTest2.Apps.Web.Server.Pages
 
 		private readonly ILogger<ErrorModel> _logger;
 
-		public ErrorModel(ILogger<ErrorModel> logger)
-		{
-			_logger = logger;
-		}
+		public ErrorModel(ILogger<ErrorModel> logger) 
+			=> _logger = logger;
 
 		public void OnGet()
 		{
+			_logger.LogInformation("showing error page");
 			RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
 		}
 	}
