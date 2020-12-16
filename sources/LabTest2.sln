@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3CA6C679
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "LabTest2.Architecture", "LabTest2.Architecture\LabTest2.Architecture.modelproj", "{EDA5DC8F-AAF8-4A2B-89BF-181C2356EF7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabTest2.Data", "LabTest2.Data\LabTest2.Data.csproj", "{CF49BD59-9A7C-49E3-BB5A-1ABCE3D89274}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabTest2.Data", "LabTest2.Data\LabTest2.Data.csproj", "{CF49BD59-9A7C-49E3-BB5A-1ABCE3D89274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabTest2.Apps.Web.Server", "..\LabTest2.Apps.Web\Server\LabTest2.Apps.Web.Server.csproj", "{DBC88ED4-A8D9-44C9-8A31-2A9DB99A0DA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabTest2.Apps.Web.Server", "..\LabTest2.Apps.Web\Server\LabTest2.Apps.Web.Server.csproj", "{DBC88ED4-A8D9-44C9-8A31-2A9DB99A0DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabTest2.Apps.Web.Client", "..\LabTest2.Apps.Web\Client\LabTest2.Apps.Web.Client.csproj", "{26BF4A05-6853-41D0-AA78-A64C5C32C0AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabTest2.Apps.Web.Client", "..\LabTest2.Apps.Web\Client\LabTest2.Apps.Web.Client.csproj", "{26BF4A05-6853-41D0-AA78-A64C5C32C0AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabTest2.Apps.Web.Shared", "..\LabTest2.Apps.Web\Shared\LabTest2.Apps.Web.Shared.csproj", "{0A626F8E-FB11-4550-84CF-03FC2675A56B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabTest2.Apps.Web.Shared", "..\LabTest2.Apps.Web\Shared\LabTest2.Apps.Web.Shared.csproj", "{0A626F8E-FB11-4550-84CF-03FC2675A56B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabTest2.Apps.Web.Tests", "LabTest2.Apps.Web.Tests\LabTest2.Apps.Web.Tests.csproj", "{8B361E98-BA4D-4B11-B6F6-7C279C554D0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabTest2.Apps.Web.Tests", "LabTest2.Apps.Web.Tests\LabTest2.Apps.Web.Tests.csproj", "{8B361E98-BA4D-4B11-B6F6-7C279C554D0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
