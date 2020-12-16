@@ -20,5 +20,23 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LabTest2.Apps.Web\Client\LabTest2.Apps.Web.Client.csproj">
+      <Name>LabTest2.Apps.Web.Client</Name>
+      <Project>{26bf4a05-6853-41d0-aa78-a64c5c32c0ab}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LabTest2.Apps.Web\Server\LabTest2.Apps.Web.Server.csproj">
+      <Name>LabTest2.Apps.Web.Server</Name>
+      <Project>{dbc88ed4-a8d9-44c9-8a31-2a9db99a0da9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LabTest2.Apps.Web\Shared\LabTest2.Apps.Web.Shared.csproj">
+      <Name>LabTest2.Apps.Web.Shared</Name>
+      <Project>{0a626f8e-fb11-4550-84cf-03fc2675a56b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\LabTest2.Data\LabTest2.Data.csproj">
+      <Name>LabTest2.Data</Name>
+      <Project>{cf49bd59-9a7c-49e3-bb5a-1abce3d89274}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>
