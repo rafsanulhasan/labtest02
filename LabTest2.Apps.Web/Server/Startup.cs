@@ -1,6 +1,10 @@
 
+using Fluxor;
+
 using LabTest2.Apps.Web.Server.Data;
 using LabTest2.Apps.Web.Server.Models;
+using LabTest2.Apps.Web.Shared.Store.Counter;
+using LabTest2.Apps.Web.Shared.ViewModels;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -12,15 +16,20 @@ using Microsoft.Extensions.Hosting;
 
 using Syncfusion.Blazor;
 using Syncfusion.Licensing;
-using Fluxor;
 
 namespace LabTest2.Apps.Web.Server
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
+		private readonly IHostEnvironment _hostEnvironment;
+
+		public Startup(
+			IConfiguration configuration,
+			IHostEnvironment hostEnvironment
+		)
 		{
 			Configuration = configuration;
+			_hostEnvironment = hostEnvironment;
 		}
 
 		public IConfiguration Configuration { get; }
@@ -29,27 +38,46 @@ namespace LabTest2.Apps.Web.Server
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<ApplicationDbContext>(options =>
-			    options.UseSqlServer(
-				   Configuration.GetConnectionString("DefaultConnection")));
+			services
+				.AddDbContext<ApplicationDbContext>(options =>
+					options.UseSqlServer(
+						Configuration
+							.GetConnectionString("DefaultConnection")
+						)
+				);
 
-			services.AddDatabaseDeveloperPageExceptionFilter();
+			if (_hostEnvironment.IsDevelopment())
+			{
+				services.AddDatabaseDeveloperPageExceptionFilter();
+			}
 
-			services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-			    .AddEntityFrameworkStores<ApplicationDbContext>();
+			services
+				.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+				.AddEntityFrameworkStores<ApplicationDbContext>();
 
-			services.AddIdentityServer()
-			    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+			services
+				.AddIdentityServer()
+				.AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 
-			services.AddAuthentication()
-			    .AddIdentityServerJwt();
+			services
+				.AddAuthentication()
+				.AddIdentityServerJwt();
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
 
 			services.AddSyncfusionBlazor();
 
-			services.AddFluxor(o => o.ScanAssemblies(typeof(Startup).Assembly));
+			services.AddScoped<CounterViewModel>();
+			services.AddScoped<FetchDataViewModel>();
+			services.AddFluxor(o =>
+			{
+				if (_hostEnvironment.IsDevelopment())
+				{
+					o.UseReduxDevTools();
+				}
+				o.ScanAssemblies(typeof(CounterState).Assembly);
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
