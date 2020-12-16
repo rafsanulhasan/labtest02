@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LabTest2.Apps.Web.Shared
+namespace LabTest2.Apps.Web.Shared.Models
 {
 	public class WeatherForecast
 	{
