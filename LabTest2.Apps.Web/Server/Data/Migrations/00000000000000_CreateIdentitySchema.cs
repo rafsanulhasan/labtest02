@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LabTest2.Apps.Web.Server.Data.Migrations
 {
-	public partial class CreateIdentitySchema : Migration
+	public partial class CreateIdentitySchema 
+		: Migration
 	{
 		protected override void Up(MigrationBuilder migrationBuilder)
 		{
