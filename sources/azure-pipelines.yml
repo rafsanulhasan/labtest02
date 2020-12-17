@@ -27,11 +27,13 @@ variables:
   srcDir: '$(System.DefaultWorkingDirectory)\sources'
   appDir: '$(srcDir)\Applications'
   solution: '$(srcDir)/*.sln'
-  projects: '$(appDir)/Web/SPA/Server/RH.Apps.Web.SPA.Lite.csproj'
-  serverProjectDir: '$(appDir)/Web/SPA/Server'
-  serverProjectName: 'RH.Apps.Web.SPA.Lite'
-  clientProjectDir: '$(appDir)/Web/SPA/Client'
-  clientProjectName: 'RH.Apps.Web.SPA'
+  projects: '$(appDir)\Web\Server\LabTest2.Apps.Web.Server.csproj'
+  webAppDir: '$(appDir)\Web'
+  serverProjectDir: '$(webDir)\Server'
+  projectPrefix: LabTest2.Apps.Web
+  serverProjectName: '$(projectPrefix).Server'
+  clientProjectDir: '$(webDir)\Client'
+  clientProjectName: '$(projectPrefix).Client'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   isPR: $[eq(variables['Build.Reason'], 'PullRequest')]
@@ -50,7 +52,7 @@ variables:
   Version.Revision.Prod: $[counter(variables.Version.Revision.Prod)]
   vmImageName: 'windows-latest'
   testDir: '$(srcDir)\Tests'
-  testProjectName: 'Lite.Tests'
+  testProjectName: 'Web.Tests'
 
 stages:
 - stage: dev
@@ -77,7 +79,7 @@ stages:
         #displayName: 'Build project'
         #inputs:
           #command: 'build'
-          #projects: '$(serverProjectDir)/$(serverProjectName).csproj'
+          #projects: '$(serverProjectDir)\$(serverProjectName).csproj'
           #arguments: '--configuration $(buildConfiguration)'
           #feedsToUse: 'select'
           #versioningScheme: 'off'
@@ -85,11 +87,11 @@ stages:
       - task: SonarCloudPrepare@1
         displayName: 'Prepare Sonar Analysis'
         inputs:
-          SonarCloud: 'SonarCloud'
+          SonarCloud: 'Sonar Cloud'
           organization: 'rafsanulhasan'
           scannerMode: 'MSBuild'
-          projectKey: 'rafsanulhasan-dev-key'
-          projectName: 'rafsanulhasan'
+          projectKey: 'labtest02'
+          projectName: 'labtest02'
       - task: DotNetCoreCLI@2
         displayName: 'Build & Test'  
         inputs:
@@ -262,11 +264,11 @@ stages:
       - task: SonarCloudPrepare@1
         displayName: 'Prepare Sonar Analysis'
         inputs:
-          SonarCloud: 'SonarCloud'
+          SonarCloud: 'Sonar Cloud'
           organization: 'rafsanulhasan'
           scannerMode: 'MSBuild'
-          projectKey: 'rafsanulhasan-dev-key'
-          projectName: 'rafsanulhasan'
+          projectKey: 'labtest02'
+          projectName: 'labtest02'
       - task: DotNetCoreCLI@2
         displayName: 'Build & Test'  
         inputs:
@@ -431,7 +433,7 @@ stages:
         #displayName: 'Build project'
         #inputs:
           #command: 'build'
-          #projects: '$(serverProjectDir)/$(serverProjectName).csproj'
+          #projects: '$(serverProjectDir)\$(serverProjectName).csproj'
           #arguments: '--configuration $(buildConfiguration)'
           #feedsToUse: 'select'
           #versioningScheme: 'off'
@@ -439,11 +441,11 @@ stages:
       - task: SonarCloudPrepare@1
         displayName: 'Prepare Sonar Analysis'
         inputs:
-          SonarCloud: 'SonarCloud'
+          SonarCloud: 'Sonar Cloud'
           organization: 'rafsanulhasan'
           scannerMode: 'MSBuild'
-          projectKey: 'rafsanulhasan-dev-key'
-          projectName: 'rafsanulhasan'
+          projectKey: 'labtest02'
+          projectName: 'labtest02'
       - task: DotNetCoreCLI@2
         displayName: 'Build & Test'  
         inputs:
