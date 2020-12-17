@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
@@ -32,7 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\sources\LabTest2.Data\LabTest2.Data.csproj" />
+		<ProjectReference Include="..\..\..\Data\LabTest2.Data.csproj" />
 		<ProjectReference Include="..\Client\LabTest2.Apps.Web.Client.csproj" />
 		<ProjectReference Include="..\Shared\LabTest2.Apps.Web.Shared.csproj" />
 	</ItemGroup>
