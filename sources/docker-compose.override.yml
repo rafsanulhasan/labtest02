@@ -2,13 +2,22 @@
 
     services:
       labtest2-db:
-        image: mcr.microsoft.com/mssql/server:2017-latest 
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        environment:
+          - MSSQL_PID=Express 
+          - ACCEPT_EULA=Y
+          - SA_PASSWORD=${SA_PASSWORD}
       labtest2-client:
         image: labtest2-clientwebapp:vs
         environment:
+          - ASPNETCORE_ENVIRONMENT=Development
+          - ASPNETCORE_Kestrel__Certificates__Default__Password="Dragon404"
+          - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/DevSkill.Web.pfx
+          - ASPNETCORE_URLS=http://+:54381;https://+:44311;
+          - ASPNETCORE_HTTPS_PORT=44331
+          - ASPNETCORE_ConnectionStrings__DefaultConnection=${DefaultConnection:-Server=labtest2-db;Database=labtest2;User Id=sa;Password=${SA_PASSWORD}; Persist Security Info=true; MultipleActiveResultSet=true}
           - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
-          - VaultUri=https://sslforfree.vault.azure.net
-          - SSLPassword=rafsanssl2020
+          - NODE_ENV=Development
         build:
           context: .
           dockerfile: Applications/Web/Server/Dockerfile.debug

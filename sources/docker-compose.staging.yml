@@ -2,16 +2,20 @@ version: '3.4'
 
 services:
   labtest2-db:
-    image: mcr.microsoft.com/mssql/server:2017-latest 
+    image: mcr.microsoft.com/mssql/server:2019-latest 
+    environment:
+      - MSSQL_PID=Express
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${SA_PASSWORD}
   labtest2-client:
     image: rafsanulhasan/labtest2/clientwebapp:beta
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Staging
       - ASPNETCORE_Kestrel__Certificates__Default__Password="Dragon404"
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/DevSkill.Web.pfx
-      - ASPNETCORE_URLS=http://+:54381;https://+:44311;http://0.0.0.0:54381;https://0.0.0.0:44311;http://120.50.14.60:8000;https://120.50.14.60:9000;http://120.50.14.61:8000;https://120.50.14.61:9000
+      - ASPNETCORE_URLS=http://+:54381;https://+:44311;
       - ASPNETCORE_HTTPS_PORT=44331
-      - ASPNETCORE_ConnectionStrings__DefaultConnection=${DefaultConnection:-Server=120.50.14.60;Database=DevSkillV2;User Id=sa;Password=Dragon404; Persist Security Info=true; MultipleActiveResultSet=true}
+      - ASPNETCORE_ConnectionStrings__DefaultConnection=${DefaultConnection:-Server=labtest2-db;Database=labtest2;User Id=sa;Password=${SA_PASSWORD}; Persist Security Info=true; MultipleActiveResultSet=true}
       #- NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
       - NODE_ENV=Development
     build:
