@@ -1,0 +1,10 @@
+  version: '3.4'
+  services:
+    labtest2-db:
+      image: mcr.microsoft.com/mssql/server:2017-latest
+      container_name: labtest2-mssql-db-server
+    labtest2-client:
+      image: rafsanulhasan/labtest2/clientwebapp:latest
+      container_name: labtest2-clientwebapp-api
+      depends_on:
+        - labtest2-db
