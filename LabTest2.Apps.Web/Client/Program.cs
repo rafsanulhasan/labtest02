@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Fluxor;
 
 using LabTest2.Apps.Web.Shared.Store.Counter;
+using LabTest2.Apps.Web.Shared.Store.FetchData;
+using LabTest2.Apps.Web.Shared.ViewModels;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -65,6 +67,9 @@ namespace LabTest2.Apps.Web.Client
 					typeof(CounterState).Assembly
 				);
 			});
+
+			services.AddTransient<CounterViewModel>();
+			services.AddTransient<FetchDataViewModel>();
 
 			await builder.Build().RunAsync().ConfigureAwait(false);
 		}

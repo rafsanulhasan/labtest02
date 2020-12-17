@@ -3,13 +3,15 @@ using System.Reactive.Disposables;
 
 using Fluxor;
 
+using LabTest2.Apps.Web.Shared.Store;
+
 using ReactiveUI;
 
 namespace LabTest2.Apps.Web.Shared.ViewModels
 {
 	public abstract class ViewModelBase<TState>
 		: ReactiveObject, IDisposable
-		where TState:class
+		where TState : StateBase
 	{
 		private bool _disposedValue;
 		protected readonly CompositeDisposable Disposables;

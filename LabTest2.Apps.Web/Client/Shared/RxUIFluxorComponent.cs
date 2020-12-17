@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Fluxor;
 using Fluxor.UnsupportedClasses;
 
+using LabTest2.Apps.Web.Shared.Store;
+using LabTest2.Apps.Web.Shared.ViewModels;
+
 using Microsoft.AspNetCore.Components;
 
 using ReactiveUI;
@@ -15,21 +18,32 @@ using ReactiveUI.Blazor;
 
 namespace LabTest2.Apps.Web.Client.Shared
 {
-	public class RxUIFluxorComponent<T>
-		: ReactiveComponentBase<T>
-		where T : ReactiveObject, INotifyPropertyChanged
+	public class RxUIFluxorComponent<TViewModel, TState>
+		: ReactiveComponentBase<TViewModel>
+		where TViewModel : ViewModelBase<TState>
+		where TState : StateBase
 	{
 		private IDisposable _stateSubscription;
 		private readonly ThrottledInvoker _stateHasChangedThrottler;
 
 		protected bool Disposed;
 
-		protected new T ViewModel { get; set; }
+		[Inject]
+		protected new TViewModel ViewModel { get; set; }
 
 		[Inject]
 		protected IServiceProvider ServiceProvider { get; set; }
 
-		protected CompositeDisposable Disposables { get; }
+		protected CompositeDisposable Disposables { get; set; }
+
+		[Inject]
+		protected IStore Store { get; set; }
+
+		[Inject]
+		protected IState<TState> State { get; set; }
+
+		[Inject]
+		protected IDispatcher Dispatcher { get; set; }
 
 		/// <summary>
 		/// If greater than 0, the feature will not execute state changes
@@ -113,6 +127,8 @@ namespace LabTest2.Apps.Web.Client.Shared
 				_ => _stateHasChangedThrottler.Invoke(MaximumStateChangedNotificationsPerSecond)
 			)
 			.DisposeWith(Disposables);
+
+			ViewModel.DisposeWith(Disposables);
 		}
 
 		/// <summary>
@@ -126,6 +142,7 @@ namespace LabTest2.Apps.Web.Client.Shared
 				_ => _stateHasChangedThrottler.Invoke(MaximumStateChangedNotificationsPerSecond)
 			)
 			.DisposeWith(Disposables);
+			ViewModel.DisposeWith(Disposables);
 		}
 
 		protected override void Dispose(bool disposing)
