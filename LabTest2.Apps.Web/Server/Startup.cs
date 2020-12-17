@@ -1,15 +1,13 @@
 
 using Fluxor;
 
-using LabTest2.Apps.Web.Server.Data;
-using LabTest2.Apps.Web.Server.Models;
 using LabTest2.Apps.Web.Shared.Store.Counter;
 using LabTest2.Apps.Web.Shared.ViewModels;
+using LabTest2.Data;
+using LabTest2.Data.Entities;
 
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -38,30 +36,14 @@ namespace LabTest2.Apps.Web.Server
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services
-				.AddDbContext<ApplicationDbContext>(options =>
-					options.UseSqlServer(
-						Configuration
-							.GetConnectionString("DefaultConnection")
-						)
-				);
+			services.AddDatabaseAndEF<ApplicationDbContext, ApplicationUser>(
+				"DefaultConnection",
+				typeof(Program).Assembly.FullName
+			);
 
-			if (_hostEnvironment.IsDevelopment())
-			{
-				services.AddDatabaseDeveloperPageExceptionFilter();
-			}
-
-			services
-				.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
-
-			services
-				.AddIdentityServer()
-				.AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-			services
-				.AddAuthentication()
-				.AddIdentityServerJwt();
+			services.AddAuth<ApplicationDbContext, ApplicationUser>(
+				options => options.SignIn.RequireConfirmedAccount = true
+			);
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
@@ -103,9 +85,7 @@ namespace LabTest2.Apps.Web.Server
 
 			app.UseRouting();
 
-			app.UseIdentityServer();
-			app.UseAuthentication();
-			app.UseAuthorization();
+			app.UseAAAWithIdentityServer();
 
 			app.UseEndpoints(endpoints =>
 			{
