@@ -1,13 +1,13 @@
 ﻿
 using IdentityServer4.EntityFramework.Options;
 
-using LabTest2.Apps.Web.Server.Models;
+using LabTest2.Data.Entities;
 
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace LabTest2.Apps.Web.Server.Data
+namespace LabTest2.Data
 {
 	public class ApplicationDbContext
 		: ApiAuthorizationDbContext<ApplicationUser>

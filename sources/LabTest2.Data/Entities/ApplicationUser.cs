@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 
-namespace LabTest2.Apps.Web.Server.Models
+namespace LabTest2.Data.Entities
 {
 	public class ApplicationUser
 		: IdentityUser
