@@ -1,11 +1,12 @@
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 using Fluxor;
 
+using LabTest2.Apps.Web.Shared;
 using LabTest2.Apps.Web.Shared.Store.Counter;
-using LabTest2.Apps.Web.Shared.Store.FetchData;
 using LabTest2.Apps.Web.Shared.ViewModels;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -57,19 +58,28 @@ namespace LabTest2.Apps.Web.Client
 
 			services.AddSyncfusionBlazor();
 
+			var assembliesToScan = new[]
+			{
+				typeof(CounterViewModel).Assembly
+			};
+
 			services.AddFluxor(o =>
 			{
 				if (hostEnv.IsDevelopment())
-				{
 					o.UseReduxDevTools();
-				}
+				else
+					o.UseRouting();
+
 				o.ScanAssemblies(
-					typeof(CounterState).Assembly
+					assembliesToScan.First()
 				);
 			});
 
-			services.AddTransient<CounterViewModel>();
-			services.AddTransient<FetchDataViewModel>();
+			services.Add(
+				assembliesToScan,
+				t => t.Name.EndsWith("ViewModel"),
+				ServiceLifetime.Transient
+			);
 
 			await builder.Build().RunAsync().ConfigureAwait(false);
 		}
