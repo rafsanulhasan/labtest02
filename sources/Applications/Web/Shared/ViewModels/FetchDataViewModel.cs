@@ -9,8 +9,6 @@ using Fluxor;
 using LabTest2.Apps.Web.Shared.Models;
 using LabTest2.Apps.Web.Shared.Store.FetchData;
 
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-
 using ReactiveUI;
 
 namespace LabTest2.Apps.Web.Shared.ViewModels
@@ -65,48 +63,6 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 			var vmState = State.Value;
 			WeatherForecasts = vmState.WeatherForecasts;
 
-			Observable.Create<bool>(o =>
-			{
-				try
-				{
-					o.OnNext(
-						WeatherForecasts.Count == 0
-					);
-					o.OnCompleted();
-				}
-				catch (Exception ex)
-				{
-					o.OnError(ex);
-				}
-				return Disposable.Empty;
-			})
-			.StartWith(true)
-			.ToProperty(
-				this,
-				vm => vm.IsEmpty,
-				() => WeatherForecasts.Count == 0
-			);
-
-			Observable.Create<bool>(o =>
-			{
-				try
-				{
-					o.OnNext(vmState.IsLoading);
-					o.OnCompleted();
-				}
-				catch (Exception ex)
-				{
-					o.OnError(ex);
-				}
-				return Disposable.Empty;
-			})
-			.StartWith(true)
-			.ToProperty(
-				this,
-				vm => vm.IsLoading,
-				() => vmState.IsLoading
-			);
-
 			FetchCommand = ReactiveCommand.Create(
 				() => GetForecasts(),
 				null,
@@ -121,7 +77,7 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 			.Where(evt => evt is not null)
 			.Select(handler => handler.EventArgs)
 			.Where(args => args is not null)
-			.Subscribe(state
+			.Subscribe(state 
 				=> WeatherForecasts = state.WeatherForecasts
 			)
 			.DisposeWith(Disposables)
