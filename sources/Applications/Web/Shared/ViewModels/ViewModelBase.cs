@@ -16,9 +16,11 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 		private bool _disposedValue;
 		protected readonly CompositeDisposable Disposables;
 
-		public IStore Store { get; }
-		public IState<TState> State { get; }
-		public IDispatcher Dispatcher { get; }
+		public IStore Store { get; protected set; }
+
+		public IState<TState> State { get; protected set; }
+
+		public IDispatcher Dispatcher { get; protected set; }
 
 		protected ViewModelBase(
 			IStore store,

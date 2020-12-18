@@ -20,19 +20,7 @@ namespace LabTest2.Apps.Web.Client.Pages
 			=> ViewModel
 				.IncreaseCommand
 				.Execute()
-				.Subscribe()
-				.DisposeWith(Disposables);
-
-		protected override void OnInitialized()
-		{
-			base.OnInitialized();
-			//ViewModel = CounterViewModel.GetInstance(
-			//	Store,
-			//	State,
-			//	Dispatcher
-			//);
-			//ViewModel.DisposeWith(Disposables);
-		}
+				.Subscribe();
 
 		protected override void OnAfterRender(bool firstRender)
 		{
