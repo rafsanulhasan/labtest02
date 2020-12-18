@@ -1,12 +1,6 @@
-using System;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-
 using Fluxor;
 
 using LabTest2.Apps.Web.Shared;
-using LabTest2.Apps.Web.Shared.Store.Counter;
 using LabTest2.Apps.Web.Shared.ViewModels;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -14,6 +8,11 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
 using Syncfusion.Blazor;
+
+using System;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace LabTest2.Apps.Web.Client
 {
