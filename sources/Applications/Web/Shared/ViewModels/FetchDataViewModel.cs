@@ -6,7 +6,7 @@ using System.Reactive.Linq;
 
 using Fluxor;
 
-using LabTest2.Apps.Web.Shared.Models;
+using LabTest2.Apps.Web.Shared.DTOs;
 using LabTest2.Apps.Web.Shared.Store.FetchData;
 
 using ReactiveUI;
@@ -16,8 +16,8 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 	public class FetchDataViewModel
 		: ViewModelBase<FetchDataState>
 	{
-		private IImmutableList<WeatherForecast> _weatherForecasts;
-		public IImmutableList<WeatherForecast> WeatherForecasts
+		private IImmutableList<WeatherForecastDTO> _weatherForecasts;
+		public IImmutableList<WeatherForecastDTO> WeatherForecasts
 		{
 			get => _weatherForecasts;
 			set => this.RaiseAndSetIfChanged(ref _weatherForecasts, value);

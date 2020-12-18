@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using LabTest2.Apps.Web.Shared.Models;
+using LabTest2.Apps.Web.Shared.DTOs;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,10 +30,10 @@ namespace LabTest2.Apps.Web.Server.Controllers
 
 		[AllowAnonymous]
 		[HttpGet]
-		public IEnumerable<WeatherForecast> Get()
+		public IEnumerable<WeatherForecastDTO> Get()
 		{
 			var rng = new Random();
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+			return Enumerable.Range(1, 5).Select(index => new WeatherForecastDTO
 			{
 				Date = DateTime.Now.AddDays(index),
 				TemperatureC = rng.Next(-20, 55),

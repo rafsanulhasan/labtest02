@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 using Fluxor;
 
-using LabTest2.Apps.Web.Shared.Models;
+using LabTest2.Apps.Web.Shared.DTOs;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
@@ -44,12 +44,12 @@ namespace LabTest2.Apps.Web.Shared.Store.FetchData
 		{
 			var resultAction = new FetchDataResultAction(_initialState.WeatherForecasts, _initialState.IsLoading);
 			_ = Observable
-				.Create<List<WeatherForecast>>(async observer =>
+				.Create<List<WeatherForecastDTO>>(async observer =>
 				{
 					try
 					{
 						var forecasts = await _http
-							.GetFromJsonAsync<List<WeatherForecast>>(
+							.GetFromJsonAsync<List<WeatherForecastDTO>>(
 								"WeatherForecast"
 							)
 							.ConfigureAwait(true);
@@ -69,12 +69,12 @@ namespace LabTest2.Apps.Web.Shared.Store.FetchData
 				.Select(forecasts => forecasts.ToImmutableList())
 				.Retry(5)
 				.Timeout(TimeSpan.FromSeconds(10))
-				.Catch<ImmutableList<WeatherForecast>, AccessTokenNotAvailableException>(ex =>
+				.Catch<ImmutableList<WeatherForecastDTO>, AccessTokenNotAvailableException>(ex =>
 				{
 					ex.Redirect();
 					return Observable.Return(resultAction.WeatherForecasts.ToImmutableList());
 				})
-				.Catch<ImmutableList<WeatherForecast>, Exception>(_
+				.Catch<ImmutableList<WeatherForecastDTO>, Exception>(_
 					=> Observable.Return(resultAction.WeatherForecasts.ToImmutableList())
 				)
 				//.SubscribeOn(RxApp.TaskpoolScheduler)
