@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace LabTest2.Apps.Web.Shared.Models
+namespace LabTest2.Apps.Web.Shared.DTOs
 {
-	public class WeatherForecast
+	public class WeatherForecastDTO
 	{
 		public DateTime Date { get; set; }
 
@@ -10,6 +10,7 @@ namespace LabTest2.Apps.Web.Shared.Models
 
 		public string Summary { get; set; }
 
-		public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+		public int TemperatureF 
+			=> 32 + (int)(TemperatureC / 0.5556);
 	}
 }
