@@ -29,21 +29,24 @@ namespace LabTest2.Apps.Web.Client.Shared
 		protected bool Disposed;
 
 		[Inject]
-		protected new TViewModel ViewModel { get; set; }
+		private IActionSubscriber ActionSubscriber { get; set; }
 
 		[Inject]
-		protected IServiceProvider ServiceProvider { get; set; }
-
-		protected CompositeDisposable Disposables { get; set; }
+		public new TViewModel ViewModel { get; protected set; }
 
 		[Inject]
-		protected IStore Store { get; set; }
+		public IServiceProvider ServiceProvider { get; protected set; }
+
+		public CompositeDisposable Disposables { get; protected set; }
 
 		[Inject]
-		protected IState<TState> State { get; set; }
+		public IStore Store { get; protected set; }
 
 		[Inject]
-		protected IDispatcher Dispatcher { get; set; }
+		public IState<TState> State { get; protected set; }
+
+		[Inject]
+		public IDispatcher Dispatcher { get; protected set; }
 
 		/// <summary>
 		/// If greater than 0, the feature will not execute state changes
@@ -52,9 +55,6 @@ namespace LabTest2.Apps.Web.Client.Shared
 		/// state when the time window has elapsed to allow another notification.
 		/// </summary>
 		protected byte MaximumStateChangedNotificationsPerSecond { get; set; }
-
-		[Inject]
-		private IActionSubscriber ActionSubscriber { get; set; }
 
 		/// <summary>
 		/// Creates a new instance
