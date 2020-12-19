@@ -1,8 +1,8 @@
-﻿using System.Collections.Immutable;
+﻿using Fluxor;
 
-using Fluxor;
+using LabTest2.Apps.Web.Shared.DTOs;
 
-using LabTest2.Apps.Web.Shared.Models;
+using System.Collections.Immutable;
 
 namespace LabTest2.Apps.Web.Shared.Store.FetchData
 {
@@ -12,10 +12,10 @@ namespace LabTest2.Apps.Web.Shared.Store.FetchData
 		public override string GetName()
 			=> "FetchData";
 
-		protected override FetchDataState GetInitialState()
+		protected override FetchDataState GetInitialState() 
 			=> new FetchDataState(
-				ImmutableList<WeatherForecast>.Empty,
-				true
-			);
+				   ImmutableList<WeatherForecastDTO>.Empty,
+				   true
+			   );
 	}
 }

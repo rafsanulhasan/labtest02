@@ -1,4 +1,12 @@
 ﻿
+using Fluxor;
+
+using LabTest2.Apps.Web.Shared.DTOs;
+
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+
+using ReactiveUI;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -7,14 +15,6 @@ using System.Net.Http.Json;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-
-using Fluxor;
-
-using LabTest2.Apps.Web.Shared.DTOs;
-
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-
-using ReactiveUI;
 
 namespace LabTest2.Apps.Web.Shared.Store.FetchData
 {
@@ -53,7 +53,7 @@ namespace LabTest2.Apps.Web.Shared.Store.FetchData
 								"WeatherForecast"
 							)
 							.ConfigureAwait(true);
-						observer.OnNext(forecasts);
+						observer.OnNext(forecasts!);
 						observer.OnCompleted();
 					}
 					catch (AccessTokenNotAvailableException ex)
