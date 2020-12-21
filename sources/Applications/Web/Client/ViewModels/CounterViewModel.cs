@@ -9,7 +9,7 @@ using LabTest2.Apps.Web.Shared.Store.Counter;
 
 using ReactiveUI;
 
-namespace LabTest2.Apps.Web.Shared.ViewModels
+namespace LabTest2.Apps.Web.Client.ViewModels
 {
 	public class CounterViewModel
 		: ViewModelBase<CounterState>

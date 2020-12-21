@@ -7,7 +7,7 @@ using LabTest2.Apps.Web.Shared.Store;
 
 using ReactiveUI;
 
-namespace LabTest2.Apps.Web.Shared.ViewModels
+namespace LabTest2.Apps.Web.Client.ViewModels
 {
 	public abstract class ViewModelBase<TState>
 		: ReactiveObject, IDisposable
