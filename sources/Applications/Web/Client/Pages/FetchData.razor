@@ -5,12 +5,14 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (ViewModel.IsLoading) {
+@if (ViewModel.IsLoading)
+{
 <p><em>Loading...</em></p>
 }
-else if (!ViewModel.IsLoading && ViewModel.IsEmpty) {
-<p><em>No data</em></p>	
-} 
+else if (!ViewModel.IsLoading && ViewModel.IsEmpty)
+{
+<p><em>No data</em></p>
+}
 else if (!ViewModel.IsLoading && !ViewModel.IsEmpty)
 {
 <table class="table">
@@ -25,13 +27,32 @@ else if (!ViewModel.IsLoading && !ViewModel.IsEmpty)
 	<tbody>
 		@foreach (var forecast in ViewModel.WeatherForecasts)
 		{
-			<tr>
-				<td>@forecast.Date.ToShortDateString()</td>
-				<td>@forecast.TemperatureC</td>
-				<td>@forecast.TemperatureF</td>
-				<td>@forecast.Summary</td>
-			</tr>
+		<tr>
+			<td>@forecast.Date.ToShortDateString()</td>
+			<td>@forecast.TemperatureC</td>
+			<td>@forecast.TemperatureF</td>
+			<td>@forecast.Summary</td>
+		</tr>
 		}
+		
+		@*<Virtualize 
+			Context="forecast"
+			ItemsProvider="@LoadForecasts"
+			OverscanCount="5">
+			<ItemContent>
+				<tr>
+					<td>@forecast.Date.ToShortDateString()</td>
+					<td>@forecast.TemperatureC</td>
+					<td>@forecast.TemperatureF</td>
+					<td>@forecast.Summary</td>
+				</tr>
+			</ItemContent>
+			<Placeholder>
+				<tr class="center">
+					<td colspan="4"><p><em>Loading &hellip;...</em></p></td>
+				</tr>
+			</Placeholder>
+		</Virtualize>*@
 	</tbody>
 </table>
 } 

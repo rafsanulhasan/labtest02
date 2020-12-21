@@ -3,7 +3,16 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+		<BerryNamespace>$(RootNamespace).GraphClient</BerryNamespace>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <GraphQL Include="Client\graph\Queries.graphql" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Watch Include="Client\graph\Queries.graphql" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Fluxor.Blazor.Web" Version="3.9.0" />
@@ -16,6 +25,7 @@
 		<PackageReference Include="ReactiveUI.Blazor" Version="13.0.1" />
 		<PackageReference Include="ReactiveUI.Fody" Version="13.0.1" />
 		<PackageReference Include="Splat.Microsoft.Extensions.DependencyInjection" Version="9.8.1" />
+		<PackageReference Include="StrawberryShake" Version="11.0.0-preview.137" />
 		<PackageReference Include="Syncfusion.Blazor" Version="18.3.0.53" />
 		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
 	</ItemGroup>

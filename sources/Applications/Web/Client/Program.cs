@@ -1,11 +1,14 @@
 using Fluxor;
 
+using LabTest2.Apps.Web.Client.GraphClient;
 using LabTest2.Apps.Web.Shared;
 using LabTest2.Apps.Web.Shared.ViewModels;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+
+using StrawberryShake.Transport.WebSockets;
 
 using Syncfusion.Blazor;
 
@@ -26,12 +29,18 @@ namespace LabTest2.Apps.Web.Client
 
 			var services = builder.Services;
 			var hostEnv = builder.HostEnvironment;
+			var baseAddress = builder.HostEnvironment.BaseAddress;
+			var websocketAddress = baseAddress
+								.Replace("https", "wss")
+								.Concat("graph")
+								.ToString();
+			Console.WriteLine(websocketAddress);
 
 			services
 				.AddHttpClient(
 					"LabTest2.Apps.Web.ServerAPI",
 					client
-						=> client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+						=> client.BaseAddress = new Uri(baseAddress)
 				)
 				.AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>()
 				;
@@ -39,10 +48,30 @@ namespace LabTest2.Apps.Web.Client
 			services
 				.AddHttpClient(
 					"LabTest2.Apps.Web.ServerAPI-Unrestricted",
-					client
-						=> client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+					client =>
+					{
+						client.BaseAddress = new Uri(baseAddress);
+						client.DefaultRequestVersion = Version.Parse("2.0");
+					}
 				)
 				;
+
+			services
+				.AddHttpClient(
+					"LabTest2Client",
+					client =>
+					{
+						client.BaseAddress = new Uri("https://localhost:5001/graph");
+						client.DefaultRequestVersion = Version.Parse("2.0");
+					}
+				);
+
+			services.AddWebSocketClient(
+			    "LabTest2Client",
+			    c => c.Uri = new Uri("wss://localhost:5001/graph")
+			);
+
+			services.AddLabTest2Client();
 
 			// Supply HttpClient instances that include access tokens when making requests to the server project
 			services.AddScoped(sp =>
@@ -79,7 +108,7 @@ namespace LabTest2.Apps.Web.Client
 				t => t.Name.EndsWith("ViewModel"),
 				ServiceLifetime.Transient
 			);
-
+			
 			await builder.Build().RunAsync().ConfigureAwait(false);
 		}
 	}

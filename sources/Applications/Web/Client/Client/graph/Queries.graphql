@@ -1,0 +1,31 @@
+﻿query getWeatherForecasts {
+	forecasts {
+		... GetForecastResponse
+	}
+}
+
+mutation addWeatherForecast($forecast: WeatherForecastDTOInput!) {
+	addForecast(weatherForecast: $forecast) {
+		... GetForecastResponse
+	}
+}
+
+subscription subscribeToWeatherForecast {
+	onGetForecasts {
+		... WeatherForecast
+	}
+}
+
+fragment WeatherForecast on WeatherForecastDTO {
+	date
+	temperatureC
+	temperatureF
+	summary
+} 
+
+fragment GetForecastResponse on WeatherForecastRequestPayload {
+  response
+  errors {
+    message
+  }
+}

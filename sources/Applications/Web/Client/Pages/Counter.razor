@@ -5,10 +5,10 @@
 
 <p>Current count: @ViewModel.Count</p>
 
-<SfButton @ref="@IncreaseButton" 
+<button
           Content="Increase" 
-          CssClass="e-primary"
+          CssClass="btn btn-primary"
           @onclick="OnIncrease"
-          Disabled="@ViewModel.IsIncreaseButtonDisabled">
-	
-</SfButton>
+          disabled="@ViewModel.IsIncreaseButtonDisabled">
+	Increase
+</button>
