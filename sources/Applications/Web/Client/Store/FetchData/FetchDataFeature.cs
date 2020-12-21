@@ -4,7 +4,7 @@ using LabTest2.Apps.Web.Shared.DTOs;
 
 using System.Collections.Immutable;
 
-namespace LabTest2.Apps.Web.Shared.Store.FetchData
+namespace LabTest2.Apps.Web.Client.Store.FetchData
 {
 	public class FetchDataFeature
 		: Feature<FetchDataState>

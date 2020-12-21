@@ -2,7 +2,7 @@
 
 using System.Collections.Immutable;
 
-namespace LabTest2.Apps.Web.Shared.Store.FetchData
+namespace LabTest2.Apps.Web.Client.Store.FetchData
 {
 	public record FetchDataState(
 		IImmutableList<WeatherForecastDTO> WeatherForecasts,

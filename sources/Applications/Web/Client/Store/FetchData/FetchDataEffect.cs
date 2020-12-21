@@ -16,7 +16,7 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 
-namespace LabTest2.Apps.Web.Shared.Store.FetchData
+namespace LabTest2.Apps.Web.Client.Store.FetchData
 {
 	public class FetchDataEffect
 		: Effect<FetchDataAction>, IDisposable

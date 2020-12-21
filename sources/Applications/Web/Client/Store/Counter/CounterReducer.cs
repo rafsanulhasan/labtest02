@@ -1,7 +1,7 @@
 ﻿
 using Fluxor;
 
-namespace LabTest2.Apps.Web.Shared.Store.Counter
+namespace LabTest2.Apps.Web.Client.Store.Counter
 {
 	public class CounterIncrementReducer
 		: Reducer<CounterState, CounterIncrementAction>

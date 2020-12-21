@@ -1,7 +1,7 @@
 ﻿
 using Fluxor;
 
-namespace LabTest2.Apps.Web.Shared.Store.FetchData
+namespace LabTest2.Apps.Web.Client.Store.FetchData
 {
 	public class FetchDataReducer
 		: Reducer<FetchDataState, FetchDataResultAction>
