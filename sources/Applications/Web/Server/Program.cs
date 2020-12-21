@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
 
 namespace LabTest2.Apps.Web.Server
@@ -13,7 +14,13 @@ namespace LabTest2.Apps.Web.Server
 			=> Host
 				.CreateDefaultBuilder(args)
 				.ConfigureWebHostDefaults(webBuilder
-					=> webBuilder.UseStartup<Startup>()
+					=> webBuilder
+						.ConfigureKestrel(o 
+							=> o.ConfigureEndpointDefaults(o => 
+								o.Protocols = HttpProtocols.Http1AndHttp2
+							)
+						)
+						.UseStartup<Startup>()
 				);
 	}
 }
