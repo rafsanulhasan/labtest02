@@ -2,16 +2,25 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
 		<PackageReference Include="Fluxor" Version="3.9.0" />
+		<PackageReference Include="HotChocolate.Subscriptions" Version="11.0.5" />
+		<PackageReference Include="HotChocolate.Types" Version="11.0.5" />
+		<PackageReference Include="HotChocolate.Types.Filters" Version="11.0.5" />
+		<PackageReference Include="HotChocolate.Types.OffsetPagination" Version="11.0.5" />
+		<PackageReference Include="HotChocolate.Types.Sorting" Version="11.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.1" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" />
 		<PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
 		<PackageReference Include="NetCore.AutoRegisterDi" Version="2.1.0" />
 		<PackageReference Include="ReactiveUI" Version="13.0.1" />
+		<PackageReference Include="System.Linq.Async" Version="5.0.0" />
+		<PackageReference Include="System.Linq.Async.Queryable" Version="5.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
