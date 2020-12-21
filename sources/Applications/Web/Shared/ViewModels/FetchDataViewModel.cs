@@ -16,10 +16,10 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 	public class FetchDataViewModel
 		: ViewModelBase<FetchDataState>
 	{
-		private IImmutableList<WeatherForecastDTO> _weatherForecasts;
+		private IImmutableList<WeatherForecastDTO>? _weatherForecasts;
 		public IImmutableList<WeatherForecastDTO> WeatherForecasts
 		{
-			get => _weatherForecasts;
+			get => _weatherForecasts!;
 			set => this.RaiseAndSetIfChanged(ref _weatherForecasts, value);
 		}
 
@@ -46,8 +46,8 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 			set => this.RaiseAndSetIfChanged(ref _canLoad, value);
 		}
 
-		private string _error;
-		public string Error
+		private string? _error;
+		public string? Error
 		{
 			get => _error;
 			set => this.RaiseAndSetIfChanged(ref _error, value);
@@ -56,7 +56,7 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 		public FetchDataViewModel(
 			IStore store,
 			IState<FetchDataState> state,
-			IDispatcher dispatcher
+			IDispatcher dispatcher			
 		)
 			: base(store, state, dispatcher)
 		{
@@ -82,8 +82,6 @@ namespace LabTest2.Apps.Web.Shared.ViewModels
 			)
 			.DisposeWith(Disposables)
 			;
-
-			GetForecasts();
 		}
 
 		public void GetForecasts()
