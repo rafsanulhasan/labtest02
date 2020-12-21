@@ -3,7 +3,7 @@ using System.Reactive.Disposables;
 
 using Fluxor;
 
-using LabTest2.Apps.Web.Shared.Store;
+using LabTest2.Apps.Web.Client.Store;
 
 using ReactiveUI;
 

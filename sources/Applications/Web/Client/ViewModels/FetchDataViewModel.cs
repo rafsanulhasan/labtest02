@@ -7,7 +7,7 @@ using System.Reactive.Linq;
 using Fluxor;
 
 using LabTest2.Apps.Web.Shared.DTOs;
-using LabTest2.Apps.Web.Shared.Store.FetchData;
+using LabTest2.Apps.Web.Client.Store.FetchData;
 
 using ReactiveUI;
 

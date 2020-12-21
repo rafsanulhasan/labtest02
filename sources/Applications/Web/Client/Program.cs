@@ -2,7 +2,7 @@ using Fluxor;
 
 using LabTest2.Apps.Web.Client.GraphClient;
 using LabTest2.Apps.Web.Shared;
-using LabTest2.Apps.Web.Shared.ViewModels;
+using LabTest2.Apps.Web.Client.ViewModels;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;

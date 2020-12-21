@@ -2,8 +2,8 @@
 using System.Reactive.Disposables;
 
 using LabTest2.Apps.Web.Client.Shared;
-using LabTest2.Apps.Web.Shared.Store.Counter;
-using LabTest2.Apps.Web.Shared.ViewModels;
+using LabTest2.Apps.Web.Client.Store.Counter;
+using LabTest2.Apps.Web.Client.ViewModels;
 
 using Microsoft.AspNetCore.Components.Web;
 

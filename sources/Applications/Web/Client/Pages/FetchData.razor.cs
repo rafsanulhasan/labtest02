@@ -1,7 +1,7 @@
 ﻿using LabTest2.Apps.Web.Client.Shared;
 using LabTest2.Apps.Web.Shared.DTOs;
-using LabTest2.Apps.Web.Shared.Store.FetchData;
-using LabTest2.Apps.Web.Shared.ViewModels;
+using LabTest2.Apps.Web.Client.Store.FetchData;
+using LabTest2.Apps.Web.Client.ViewModels;
 
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 

@@ -5,7 +5,7 @@ using System.Reactive.Linq;
 
 using Fluxor;
 
-using LabTest2.Apps.Web.Shared.Store.Counter;
+using LabTest2.Apps.Web.Client.Store.Counter;
 
 using ReactiveUI;
 

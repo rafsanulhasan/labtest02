@@ -10,7 +10,7 @@ using HotChocolate.Types;
 using LabTest2.Apps.Web.Shared;
 using LabTest2.Apps.Web.Shared.GraphTypes;
 using LabTest2.Apps.Web.Shared.Services;
-using LabTest2.Apps.Web.Shared.Store.Counter;
+using LabTest2.Apps.Web.Client.Store.Counter;
 using LabTest2.Data;
 using LabTest2.Data.Entities;
 

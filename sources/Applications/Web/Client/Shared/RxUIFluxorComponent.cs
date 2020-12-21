@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using Fluxor;
 using Fluxor.UnsupportedClasses;
 
-using LabTest2.Apps.Web.Shared.Store;
-using LabTest2.Apps.Web.Shared.ViewModels;
+using LabTest2.Apps.Web.Client.Store;
+using LabTest2.Apps.Web.Client.ViewModels;
 
 using Microsoft.AspNetCore.Components;
 
